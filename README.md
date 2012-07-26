@@ -4,11 +4,19 @@ This document describes the process of designing a custom framework based on the
 
 ## Overview
 
-The Generic Framework contains custom graphical widgets, custom UI classes, and a well structured system for creating a framework style application.  The Generic Framework has a strong MFC design pattern that distinctly separates the models behind the user interface with the user interface itself.  The overview of the system will begin with the model behind the user interface.   
+The Generic Framework contains custom graphical widgets, custom UI classes, and a well structured system for creating a framework style application.  The Generic Framework has a strong MVC design pattern that distinctly separates the models behind the user interface with the user interface itself.  The overview of the system will begin with the model behind the user interface.  
+
+### Module Systems and Modules
+
+People can build modules for the Generic Framework.  Modules are .jar files that are loaded into the framework at run-time.  A module system is responsible for loading a set of modules.  For example, the Plugins Module System loads .jar files from a 'plugins' folder in the installation directory.  It also ensures that each of the modules is of type 'Plugin'.  
+
+When the application loads, it first searches the 'system' directory for .jar files.  This is where dependency jars will be placed.  Additionally, Module Systems will be placed here.  Once the framework reads in all the Module Systems, it iterates through them and directs each Module System to loads its specific modules.  
+
+This bootstrapping effect allows for flexibility and logical grouping of modules.
 
 ### Project
 
-A project is what the user will view as he works in the Generic Framework.  A project contains a set of settings, along with the “Tools” that will be used within the project.  
+A project is what the user will view as he works in the Generic Framework.  A project contains a set of settings, along with the ï¿½Toolsï¿½ that will be used within the project.  
 
 ### Tools
 
